@@ -10,10 +10,15 @@ def Start(message):
 
 @MyBot.message_handler(func= lambda message: True)
 def UserMessage(message):
-    UserData = str(message.text)
-    MyFile = open('D:\mailcheck\mailData.txt', 'a')
-    MyFile.write(UserData)
-    MyFile.write('\n')
+    UserData = str(message.text)    
+    if MailCheck(UserInput) == True:
+        MyFile = open('D:\mailcheck\mailData.txt', 'a')
+        MyFile.write(UserData)
+        MyFile.write('\n')
+    else:
+        MyBot.reply_to(message,'Mail daxil edin!')
+    
+    
 
 while True:
     try:
