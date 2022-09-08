@@ -1,24 +1,25 @@
 import telebot
 from mailcheck import MailCheck
-MyTooken = "YOUR TOKEN"
+MyTooken = "5431067635:AAEEA8WSzwRL3ajoPSwZfbRNxuRipaCEVcU"
 MyBot = telebot.TeleBot(MyTooken)
 
 
 @MyBot.message_handler(commands=['start'])
 def Start(message):
+    MyBot.reply_to(message,'Salam!')
     print('I am on line!')
 
 @MyBot.message_handler(func= lambda message: True)
 def UserMessage(message):
-    UserData = str(message.text)    
-    if MailCheck(UserInput) == True:
-        MyFile = open('D:\mailcheck\mailData.txt', 'a')
+    UserData = str(message.text)
+    if MailCheck(UserData) == True:
+        MyFile = open('F:\mailcheck\mailData.txt', 'a')
         MyFile.write(UserData)
         MyFile.write('\n')
     else:
         MyBot.reply_to(message,'Mail daxil edin!')
-    
-    
+
+
 
 while True:
     try:
